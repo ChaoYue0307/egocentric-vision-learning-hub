@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>From First-Person Video To World Memory</title>
+  <style>
+    :root { color-scheme: light dark; --bg:#090f1d; --panel:#101a2d; --text:#eef4ff; --muted:#a8b4c7; --line:#2a3a5a; --a:#38bdf8; --b:#a78bfa; --c:#34d399; }
+    body { margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:var(--text); background:linear-gradient(145deg,#090f1d,#0f172a); }
+    main { max-width:900px; margin:auto; padding:48px 20px 80px; }
+    a { color:var(--a); text-decoration:none; }
+    .card { border:1px solid var(--line); border-radius:28px; padding:30px; background:color-mix(in srgb, var(--panel) 88%, transparent); box-shadow:0 24px 90px rgba(0,0,0,.24); }
+    h1 { font-size:clamp(2.4rem,7vw,5rem); line-height:.95; letter-spacing:-.06em; margin:0 0 18px; }
+    h2 { margin-top:34px; letter-spacing:-.03em; }
+    p, li { color:var(--muted); line-height:1.75; }
+    .kicker { color:var(--c); font-weight:800; letter-spacing:.08em; text-transform:uppercase; font-size:.85rem; }
+  </style>
+</head>
+<body>
+<main>
+  <p><a href="./">Back to hub</a></p>
+  <section class="card">
+    <p class="kicker">Project Narrative</p>
+    <h1>From first-person video to world memory</h1>
+    <p>Egocentric vision is powerful because it observes the world from the same viewpoint as a person or embodied agent. The same video episode can answer what the wearer is doing, where the camera moves in 3D, and what objects should be remembered.</p>
+    <h2>Action Understanding</h2>
+    <p>The action repo starts with short temporal windows. It compares a majority baseline, softmax classifiers, and an optional MLP head over RGB, hand-joint, and fusion features. The key lesson is that chronological and multi-episode evaluation are what make the numbers meaningful.</p>
+    <h2>3D Reconstruction</h2>
+    <p>The reconstruction repo prepares frames, calibration, SLAM poses, COLMAP command templates, and optional COLMAP summaries. The key lesson is that reconstruction quality starts with diagnostics before training any neural renderer.</p>
+    <h2>Scene Graph Memory</h2>
+    <p>The scene graph repo turns observations into objects, relations, timestamps, provenance, and queries. Caption-derived objects are transparent, and detector/tracker JSON can be merged when available.</p>
+    <h2>Why They Belong Together</h2>
+    <p>Action recognition explains intention. Reconstruction explains geometry. Scene graphs explain persistent state. Together they form a practical learning path for egocentric systems that need to understand tasks, space, and objects.</p>
+    <h2>Current Evidence</h2>
+    <ul>
+      <li>Live tutorial pages for each project.</li>
+      <li>Unit tests, CI, versioned docs, and v0.1.0 releases.</li>
+      <li>Real sample artifacts generated from one Xperience-10M pour-over coffee episode.</li>
+      <li>A path to extend the work with more episodes, real detector outputs, and full COLMAP/NeRF/3DGS runs.</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>

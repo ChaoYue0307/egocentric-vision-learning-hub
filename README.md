@@ -5,12 +5,14 @@ one Xperience-10M pour-over coffee episode.
 
 ![Egocentric vision learning hub preview](docs/assets/hub_preview.svg)
 ![Animated egocentric vision learning path](docs/assets/demo_loop.svg)
+![Live hub screenshot](docs/assets/live_screenshot.png)
 
 ## Start Here
 
 Open the hub:
 
 - Web page: https://chaoyue0307.github.io/egocentric-vision-learning-hub/
+- Project narrative: https://chaoyue0307.github.io/egocentric-vision-learning-hub/article.html
 
 The sequence is:
 
