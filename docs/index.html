@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Egocentric Vision Learning Hub</title>
+  <style>
+    :root { color-scheme: light dark; --bg:#090f1d; --panel:#101a2d; --text:#eef4ff; --muted:#a8b4c7; --line:#2a3a5a; --a:#38bdf8; --b:#a78bfa; --c:#34d399; --d:#f59e0b; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:var(--text); background: radial-gradient(circle at 12% 0%, #1e3a8a, transparent 32%), radial-gradient(circle at 90% 8%, #581c87, transparent 32%), linear-gradient(145deg,#090f1d,#0f172a); }
+    a { color:inherit; text-decoration:none; }
+    main { max-width:1180px; margin:auto; padding:42px 20px 72px; }
+    .topbar { position:sticky; top:0; z-index:3; backdrop-filter:blur(18px); border-bottom:1px solid rgba(148,163,184,.16); background:rgba(9,15,29,.74); }
+    .topbar-inner { max-width:1180px; margin:auto; padding:12px 20px; display:flex; justify-content:space-between; gap:16px; align-items:center; }
+    .nav { display:flex; flex-wrap:wrap; gap:10px; }
+    .nav a, .cta a { border:1px solid var(--line); border-radius:999px; padding:8px 12px; color:var(--muted); font-size:.9rem; }
+    .nav a:hover, .cta a:hover { border-color:var(--a); color:var(--text); }
+    .hero { display:grid; grid-template-columns:1.25fr .75fr; gap:20px; align-items:stretch; }
+    .card { border:1px solid var(--line); border-radius:28px; padding:26px; background:color-mix(in srgb, var(--panel) 88%, transparent); box-shadow:0 24px 90px rgba(0,0,0,.24); }
+    .kicker { display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:8px 12px; color:var(--muted); margin-bottom:18px; }
+    h1 { font-size:clamp(2.4rem,7vw,5.4rem); letter-spacing:-.07em; line-height:.92; margin:0 0 18px; }
+    h2 { margin:0 0 12px; letter-spacing:-.035em; }
+    p { color:var(--muted); line-height:1.66; }
+    .cta { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+    .cta a.primary { background:linear-gradient(135deg,var(--a),var(--b)); color:#020617; border:0; font-weight:800; }
+    .stats { display:grid; gap:12px; }
+    .stat { border:1px solid var(--line); border-radius:18px; padding:16px; background:#0b1220; }
+    .stat strong { display:block; font-size:1.8rem; color:var(--c); }
+    .path { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:22px; }
+    .project { position:relative; overflow:hidden; min-height:360px; display:flex; flex-direction:column; justify-content:space-between; }
+    .project::before { content:""; position:absolute; inset:auto -30% -40% -30%; height:170px; background:radial-gradient(circle, color-mix(in srgb, var(--accent) 40%, transparent), transparent 62%); pointer-events:none; }
+    .project[data-accent="action"] { --accent: var(--a); }
+    .project[data-accent="recon"] { --accent: var(--d); }
+    .project[data-accent="graph"] { --accent: var(--b); }
+    .project .number { color:var(--accent); font-weight:800; letter-spacing:.08em; text-transform:uppercase; font-size:.82rem; }
+    .links { display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+    .links a { border:1px solid var(--line); border-radius:12px; padding:10px 12px; color:var(--text); background:#0b1220; }
+    .flow { margin-top:22px; display:grid; grid-template-columns:repeat(5,1fr); gap:10px; align-items:center; }
+    .flow div { border:1px solid var(--line); border-radius:16px; padding:14px; background:#0b1220; text-align:center; color:var(--muted); }
+    .flow .arrow { border:0; background:transparent; color:var(--a); font-size:1.5rem; }
+    .compare { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:22px; }
+    .compare div { border:1px solid var(--line); border-radius:18px; padding:18px; background:#0b1220; }
+    .compare b { color:var(--c); }
+    @media (max-width:900px){ .hero,.path,.compare,.flow{grid-template-columns:1fr;} .flow .arrow{display:none;} .topbar-inner{align-items:flex-start; flex-direction:column;} }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <strong>Egocentric Vision Learning Hub</strong>
+    <nav class="nav">
+      <a href="#path">Learning Path</a>
+      <a href="#projects">Projects</a>
+      <a href="https://github.com/ChaoYue0307">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <div class="card">
+      <span class="kicker">First-person video · action · 3D · world memory</span>
+      <h1>A guided path through egocentric vision.</h1>
+      <p>Start with what the wearer is doing, move into how the camera sees 3D space, then build a structured memory of objects and interactions. Each project has its own live tutorial, tests, visual artifacts, and reproducible commands.</p>
+      <div class="cta">
+        <a class="primary" href="#path">Start the path</a>
+        <a href="https://github.com/ChaoYue0307/egocentric-vision-learning-hub">View repository</a>
+      </div>
+    </div>
+    <div class="card stats">
+      <div class="stat"><strong>3</strong><span>connected tutorials</span></div>
+      <div class="stat"><strong>CI</strong><span>tested repos with GitHub Actions</span></div>
+      <div class="stat"><strong>Live</strong><span>interactive GitHub Pages</span></div>
+    </div>
+  </section>
+
+  <section class="card" id="path" style="margin-top:22px">
+    <h2>Learning Sequence</h2>
+    <p>The projects are designed to be read in order. The same sample episode becomes three different technical views of egocentric video.</p>
+    <div class="flow">
+      <div>Video + hand joints</div>
+      <div class="arrow">→</div>
+      <div>Camera poses + geometry</div>
+      <div class="arrow">→</div>
+      <div>Objects + relations</div>
+    </div>
+  </section>
+
+  <section class="path" id="projects">
+    <article class="card project" data-accent="action">
+      <div>
+        <span class="number">Part 1</span>
+        <h2>Egocentric Action Baselines</h2>
+        <p>Compare RGB, hand-joint, and fusion baselines. Learn temporal windows, feature vectors, softmax classification, ablations, and F1 metrics.</p>
+      </div>
+      <div class="links">
+        <a href="https://chaoyue0307.github.io/egocentric-action-baselines/">Open tutorial</a>
+        <a href="https://github.com/ChaoYue0307/egocentric-action-baselines">GitHub</a>
+      </div>
+    </article>
+    <article class="card project" data-accent="recon">
+      <div>
+        <span class="number">Part 2</span>
+        <h2>Egocentric 3D Reconstruction</h2>
+        <p>Prepare frames, calibration, SLAM poses, COLMAP commands, NeRF templates, and 3D Gaussian Splatting templates.</p>
+      </div>
+      <div class="links">
+        <a href="https://chaoyue0307.github.io/egocentric-3d-reconstruction-demo/">Open tutorial</a>
+        <a href="https://github.com/ChaoYue0307/egocentric-3d-reconstruction-demo">GitHub</a>
+      </div>
+    </article>
+    <article class="card project" data-accent="graph">
+      <div>
+        <span class="number">Part 3</span>
+        <h2>Scene Graph Memory</h2>
+        <p>Convert annotations into objects, relations, timestamps, provenance, and queryable world-state memory.</p>
+      </div>
+      <div class="links">
+        <a href="https://chaoyue0307.github.io/scene-graph-from-egocentric-video/">Open tutorial</a>
+        <a href="https://github.com/ChaoYue0307/scene-graph-from-egocentric-video">GitHub</a>
+      </div>
+    </article>
+  </section>
+
+  <section class="card" style="margin-top:22px">
+    <h2>What Each Project Teaches</h2>
+    <div class="compare">
+      <div><b>Understanding</b><p>Classify actions from first-person video and hand motion.</p></div>
+      <div><b>Geometry</b><p>Relate frames, calibration, camera poses, and reconstruction tools.</p></div>
+      <div><b>Memory</b><p>Represent objects and interactions as a temporal graph.</p></div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
