@@ -4,6 +4,7 @@ An interactive learning path for three first-person vision demos built around
 one Xperience-10M pour-over coffee episode.
 
 ![Egocentric vision learning hub preview](docs/assets/hub_preview.svg)
+![Animated egocentric vision learning path](docs/assets/demo_loop.svg)
 
 ## Start Here
 
