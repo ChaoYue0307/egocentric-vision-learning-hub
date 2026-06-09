@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-label="Preview of the Egocentric Vision Learning Hub">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset=".55" stop-color="#111827"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="420" rx="34" fill="url(#bg)"/>
+  <circle cx="830" cy="82" r="145" fill="#38bdf8" opacity=".16"/>
+  <circle cx="130" cy="344" r="180" fill="#a78bfa" opacity=".16"/>
+  <text x="56" y="78" fill="#eef4ff" font-family="Inter,Arial,sans-serif" font-size="36" font-weight="800">Egocentric Vision Learning Hub</text>
+  <text x="58" y="114" fill="#a8b4c7" font-family="Inter,Arial,sans-serif" font-size="18">A three-part path through first-person action, geometry, and world memory</text>
+  <g transform="translate(76 164)">
+    <rect width="210" height="120" rx="22" fill="#111827" stroke="#38bdf8"/>
+    <text x="105" y="44" fill="#38bdf8" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="middle">Action</text>
+    <text x="105" y="75" fill="#eef4ff" font-family="Inter,Arial,sans-serif" font-size="15" text-anchor="middle">RGB · hands · MLP</text>
+    <text x="105" y="100" fill="#a8b4c7" font-family="Inter,Arial,sans-serif" font-size="13" text-anchor="middle">what is happening?</text>
+  </g>
+  <path d="M312 224 H390" stroke="#a8b4c7" stroke-width="4" stroke-linecap="round"/>
+  <path d="M378 212 L392 224 L378 236" fill="none" stroke="#a8b4c7" stroke-width="4" stroke-linecap="round"/>
+  <g transform="translate(404 164)">
+    <rect width="210" height="120" rx="22" fill="#111827" stroke="#f59e0b"/>
+    <text x="105" y="44" fill="#f59e0b" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="middle">3D</text>
+    <text x="105" y="75" fill="#eef4ff" font-family="Inter,Arial,sans-serif" font-size="15" text-anchor="middle">SLAM · COLMAP · NeRF</text>
+    <text x="105" y="100" fill="#a8b4c7" font-family="Inter,Arial,sans-serif" font-size="13" text-anchor="middle">where is the camera?</text>
+  </g>
+  <path d="M640 224 H718" stroke="#a8b4c7" stroke-width="4" stroke-linecap="round"/>
+  <path d="M706 212 L720 224 L706 236" fill="none" stroke="#a8b4c7" stroke-width="4" stroke-linecap="round"/>
+  <g transform="translate(732 164)">
+    <rect width="170" height="120" rx="22" fill="#111827" stroke="#a78bfa"/>
+    <text x="85" y="44" fill="#a78bfa" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="800" text-anchor="middle">Graph</text>
+    <text x="85" y="75" fill="#eef4ff" font-family="Inter,Arial,sans-serif" font-size="15" text-anchor="middle">objects · relations</text>
+    <text x="85" y="100" fill="#a8b4c7" font-family="Inter,Arial,sans-serif" font-size="13" text-anchor="middle">what is known?</text>
+  </g>
+  <circle cx="76" cy="224" r="8" fill="#38bdf8">
+    <animate attributeName="cx" values="76;404;732;76" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="fill" values="#38bdf8;#f59e0b;#a78bfa;#38bdf8" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <text x="56" y="368" fill="#eef4ff" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="700">Live GitHub Pages, tested CLIs, reusable artifacts</text>
+  <text x="56" y="396" fill="#a8b4c7" font-family="Inter,Arial,sans-serif" font-size="16">Start at the hub, then open each project tutorial.</text>
+</svg>

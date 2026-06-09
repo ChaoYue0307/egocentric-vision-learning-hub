@@ -26,6 +26,7 @@
     .stats { display:grid; gap:12px; }
     .stat { border:1px solid var(--line); border-radius:18px; padding:16px; background:#0b1220; }
     .stat strong { display:block; font-size:1.8rem; color:var(--c); }
+    .preview { width:100%; border-radius:20px; border:1px solid var(--line); display:block; margin-bottom:14px; }
     .path { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:22px; }
     .project { position:relative; overflow:hidden; min-height:360px; display:flex; flex-direction:column; justify-content:space-between; }
     .project::before { content:""; position:absolute; inset:auto -30% -40% -30%; height:170px; background:radial-gradient(circle, color-mix(in srgb, var(--accent) 40%, transparent), transparent 62%); pointer-events:none; }
@@ -67,6 +68,7 @@
       </div>
     </div>
     <div class="card stats">
+      <img class="preview" src="assets/hub_preview.svg" alt="Three-part egocentric vision learning path preview" />
       <div class="stat"><strong>3</strong><span>connected tutorials</span></div>
       <div class="stat"><strong>CI</strong><span>tested repos with GitHub Actions</span></div>
       <div class="stat"><strong>Live</strong><span>interactive GitHub Pages</span></div>
