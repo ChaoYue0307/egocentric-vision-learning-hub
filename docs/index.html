@@ -42,6 +42,8 @@
     .compare { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:22px; }
     .compare div { border:1px solid var(--line); border-radius:18px; padding:18px; background:#0b1220; }
     .compare b { color:var(--c); }
+    pre { overflow:auto; border:1px solid var(--line); border-radius:16px; padding:16px; background:#020617; color:#bfdbfe; }
+    .copy-command { border:1px solid var(--line); border-radius:12px; padding:10px 12px; background:#0b1220; color:var(--text); cursor:pointer; }
     @media (max-width:900px){ .hero,.path,.compare,.flow{grid-template-columns:1fr;} .flow .arrow{display:none;} .topbar-inner{align-items:flex-start; flex-direction:column;} }
   </style>
 </head>
@@ -131,6 +133,25 @@
       <div><b>Memory</b><p>Represent objects and interactions as a temporal graph.</p></div>
     </div>
   </section>
+
+  <section class="card" style="margin-top:22px">
+    <h2>Local Setup Commands</h2>
+    <p>Install each project when you want the clean console commands shown in the tutorials.</p>
+    <pre id="cmdSetup">git clone https://github.com/ChaoYue0307/egocentric-action-baselines
+git clone https://github.com/ChaoYue0307/egocentric-3d-reconstruction-demo
+git clone https://github.com/ChaoYue0307/scene-graph-from-egocentric-video</pre>
+    <button class="copy-command" data-copy="cmdSetup">Copy commands</button>
+  </section>
 </main>
+<script>
+document.querySelectorAll(".copy-command").forEach(button => {
+  button.addEventListener("click", () => {
+    const target = document.getElementById(button.dataset.copy);
+    navigator.clipboard.writeText(target.textContent.trim());
+    button.textContent = "Copied";
+    setTimeout(() => button.textContent = "Copy commands", 1400);
+  });
+});
+</script>
 </body>
 </html>
