@@ -42,6 +42,7 @@
     .compare { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:22px; }
     .compare div { border:1px solid var(--line); border-radius:18px; padding:18px; background:#0b1220; }
     .compare b { color:var(--c); }
+    video { width:100%; border:1px solid var(--line); border-radius:18px; background:#020617; }
     pre { overflow:auto; border:1px solid var(--line); border-radius:16px; padding:16px; background:#020617; color:#bfdbfe; }
     .copy-command { border:1px solid var(--line); border-radius:12px; padding:10px 12px; background:#0b1220; color:var(--text); cursor:pointer; }
     @media (max-width:900px){ .hero,.path,.compare,.flow{grid-template-columns:1fr;} .flow .arrow{display:none;} .topbar-inner{align-items:flex-start; flex-direction:column;} }
@@ -55,6 +56,7 @@
       <a href="#path">Learning Path</a>
       <a href="#projects">Projects</a>
       <a href="article.html">Narrative</a>
+      <a href="https://github.com/ChaoYue0307/egocentric-vision-learning-hub/blob/main/PROJECT_SUMMARY.md">Summary</a>
       <a href="v0.1.0/">v0.1.0</a>
       <a href="https://github.com/ChaoYue0307">GitHub</a>
     </nav>
@@ -134,6 +136,17 @@
       <div><b>Understanding</b><p>Classify actions from first-person video and hand motion.</p></div>
       <div><b>Geometry</b><p>Relate frames, calibration, camera poses, and reconstruction tools.</p></div>
       <div><b>Memory</b><p>Represent objects and interactions as a temporal graph.</p></div>
+    </div>
+  </section>
+
+  <section class="card" style="margin-top:22px">
+    <h2>Walkthrough Recordings</h2>
+    <p>Short browser recordings show the live pages in motion. The hub video is embedded here; the project recordings are linked beside their tutorials.</p>
+    <video controls muted preload="metadata" src="assets/walkthrough.webm"></video>
+    <div class="links">
+      <a href="https://github.com/ChaoYue0307/egocentric-action-baselines/blob/main/docs/assets/walkthrough.webm">Action video</a>
+      <a href="https://github.com/ChaoYue0307/egocentric-3d-reconstruction-demo/blob/main/docs/assets/walkthrough.webm">3D video</a>
+      <a href="https://github.com/ChaoYue0307/scene-graph-from-egocentric-video/blob/main/docs/assets/walkthrough.webm">Graph video</a>
     </div>
   </section>
 
