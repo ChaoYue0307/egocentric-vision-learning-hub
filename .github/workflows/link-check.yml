@@ -1,0 +1,23 @@
+name: Link Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"
+
+jobs:
+  lychee:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --accept 200..=204,403,429
+            README.md ARTICLE.md PROJECT_SUMMARY.md CONTRIBUTING.md
+            docs/index.html docs/article.html docs/glossary.html
+          fail: true

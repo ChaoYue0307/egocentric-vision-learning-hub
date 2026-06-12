@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Glossary · Egocentric Vision Learning Hub</title>
+  <style>
+    :root { color-scheme: light dark; --bg:#090f1d; --panel:#101a2d; --text:#eef4ff; --muted:#a8b4c7; --line:#2a3a5a; --a:#38bdf8; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:var(--text); background: radial-gradient(circle at 12% 0%, #1e3a8a, transparent 32%), radial-gradient(circle at 90% 8%, #581c87, transparent 32%), linear-gradient(145deg,#090f1d,#0f172a); }
+    a { color:var(--a); text-decoration:none; }
+    main { max-width:980px; margin:auto; padding:42px 20px 72px; }
+    .topbar { position:sticky; top:0; z-index:3; backdrop-filter:blur(18px); border-bottom:1px solid rgba(148,163,184,.16); background:rgba(9,15,29,.74); }
+    .topbar-inner { max-width:980px; margin:auto; padding:12px 20px; display:flex; justify-content:space-between; gap:16px; align-items:center; }
+    .nav a { border:1px solid var(--line); border-radius:999px; padding:8px 12px; color:var(--muted); font-size:.9rem; margin-left:8px; }
+    .nav a:hover { border-color:var(--a); color:var(--text); }
+    h1 { font-size:clamp(2rem,5vw,3.4rem); letter-spacing:-.05em; margin:18px 0; }
+    h2.section { margin:42px 0 6px; letter-spacing:-.03em; border-left:5px solid var(--accent, var(--a)); padding-left:14px; }
+    .source { color:var(--muted); margin:0 0 18px 19px; font-size:.92rem; }
+    .card { border:1px solid var(--line); border-radius:20px; padding:20px 24px; background:color-mix(in srgb, var(--panel) 88%, transparent); margin-bottom:14px; }
+    .card h3 { margin:0 0 8px; }
+    .card p { color:var(--muted); line-height:1.62; margin:8px 0; }
+    .card pre { overflow:auto; border:1px solid var(--line); border-radius:12px; padding:12px; background:#020617; color:#bfdbfe; }
+    .toc { border:1px solid var(--line); border-radius:20px; padding:18px 24px; background:#0b1220; columns:2; }
+    .toc a { display:block; color:var(--muted); padding:3px 0; break-inside:avoid; }
+    .toc a:hover { color:var(--text); }
+    @media (max-width:700px) { .toc { columns:1; } }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <strong>Egocentric Vision Learning Hub</strong>
+    <nav class="nav">
+      <a href="index.html">Hub</a>
+      <a href="article.html">Narrative</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <h1>Unified Glossary</h1>
+  <p style="color:var(--muted)">Every concept from the three project glossaries, cross-linked in one place. Generated from each repo's <code>docs/concepts.md</code> by <code>scripts/build_glossary.py</code>.</p>
+  <div class="toc">
+    <a href="#action-recognition-egocentric-video">Egocentric Video</a>
+    <a href="#action-recognition-action-recognition">Action Recognition</a>
+    <a href="#action-recognition-feature">Feature</a>
+    <a href="#action-recognition-baseline">Baseline</a>
+    <a href="#action-recognition-ablation-study">Ablation Study</a>
+    <a href="#action-recognition-accuracy">Accuracy</a>
+    <a href="#action-recognition-macro-f1">Macro F1</a>
+    <a href="#action-recognition-temporal-leakage">Temporal Leakage</a>
+    <a href="#action-recognition-label-shift">Label Shift</a>
+    <a href="#action-recognition-blocked-instance-split">Blocked-Instance Split</a>
+    <a href="#action-recognition-early-vs-late-fusion">Early vs Late Fusion</a>
+    <a href="#action-recognition-calibration-and-ece">Calibration and ECE</a>
+    <a href="#3d-reconstruction-frame-extraction">Frame Extraction</a>
+    <a href="#3d-reconstruction-camera-intrinsics">Camera Intrinsics</a>
+    <a href="#3d-reconstruction-camera-extrinsics">Camera Extrinsics</a>
+    <a href="#3d-reconstruction-slam">SLAM</a>
+    <a href="#3d-reconstruction-colmap">COLMAP</a>
+    <a href="#3d-reconstruction-nerf">NeRF</a>
+    <a href="#3d-reconstruction-3d-gaussian-splatting">3D Gaussian Splatting</a>
+    <a href="#3d-reconstruction-why-egocentric-reconstruction-is-hard">Why Egocentric Reconstruction Is Hard</a>
+    <a href="#3d-reconstruction-frame-quality-diagnostics">Frame Quality Diagnostics</a>
+    <a href="#3d-reconstruction-extrinsic-convention-verification">Extrinsic Convention Verification</a>
+    <a href="#3d-reconstruction-dynamic-object-masking">Dynamic-Object Masking</a>
+    <a href="#3d-reconstruction-ate-rpe-and-sim-3-alignment">ATE, RPE, and Sim(3) Alignment</a>
+    <a href="#scene-graph-memory-scene-graph">Scene Graph</a>
+    <a href="#scene-graph-memory-object-centric-memory">Object-Centric Memory</a>
+    <a href="#scene-graph-memory-temporal-relation">Temporal Relation</a>
+    <a href="#scene-graph-memory-hand-object-interaction">Hand-Object Interaction</a>
+    <a href="#scene-graph-memory-spatial-reasoning">Spatial Reasoning</a>
+    <a href="#scene-graph-memory-provenance">Provenance</a>
+    <a href="#scene-graph-memory-detector-hook">Detector Hook</a>
+    <a href="#scene-graph-memory-spatial-memory-egocentric-proxy">Spatial Memory (Egocentric Proxy)</a>
+    <a href="#scene-graph-memory-graph-qa-evaluation">Graph QA Evaluation</a>
+  </div>
+  <h2 class="section" style="--accent:#38bdf8">Action Recognition</h2>
+  <p class="source">from <a href="https://github.com/ChaoYue0307/egocentric-action-baselines">egocentric-action-baselines</a></p>
+  <div class="card" id="action-recognition-egocentric-video"><h3>Egocentric Video</h3><p>Egocentric video is recorded from the actor&#x27;s point of view. The camera moves with the person, so the video contains strong cues about hands, objects, and task progress. It also has challenges: motion blur, occlusion by hands, changing lighting, and quick camera rotations.</p></div>
+  <div class="card" id="action-recognition-action-recognition"><h3>Action Recognition</h3><p>Action recognition asks: &quot;What is the person doing now?&quot; In this repo the answer is a discrete label such as <code>Pick up kettle</code> or <code>Position kettle to pour</code>.</p>
+<p>The model sees a short <strong>temporal window</strong> instead of a single frame. A window lets the classifier observe motion: reaching, grasping, lifting, placing, and pouring.</p></div>
+  <div class="card" id="action-recognition-feature"><h3>Feature</h3><p>A feature is a numeric description of the input. The classifier does not train directly on raw videos here. It receives compact features:</p>
+<p>• RGB features summarize color, texture, coarse spatial layout, and frame</p>
+<p>changes.</p>
+<p>• Hand-joint features summarize 3D hand pose, velocity, and range of motion.</p>
+<p>• Fusion features concatenate RGB and hand-joint features.</p></div>
+  <div class="card" id="action-recognition-baseline"><h3>Baseline</h3><p>A baseline is a simple method that sets a reference point. Good baselines answer important questions before using larger neural networks:</p>
+<p>• Is visual context already enough?</p>
+<p>• Do hand trajectories carry action intent?</p>
+<p>• Does combining modalities improve the decision?</p></div>
+  <div class="card" id="action-recognition-ablation-study"><h3>Ablation Study</h3><p>An ablation study removes or changes one component at a time. The three experiments here form a small ablation:</p>
+<p>1. RGB only. 2. Hand joints only. 3. RGB plus hand joints.</p>
+<p>If fusion improves over both single-modality baselines, the two signals are complementary. If it does not, the dataset or model may need more samples, better temporal modeling, or stronger regularization.</p></div>
+  <div class="card" id="action-recognition-accuracy"><h3>Accuracy</h3><p>Accuracy is the fraction of predictions that are correct:</p>
+<pre>
+accuracy = correct predictions / all predictions
+</pre>
+<p>It is intuitive, but it can hide class imbalance. A model can score high if it mostly predicts a frequent action.</p></div>
+  <div class="card" id="action-recognition-macro-f1"><h3>Macro F1</h3><p>F1 combines precision and recall for each class. Macro F1 averages class scores equally, so rare classes matter as much as common classes.</p>
+<p>Use accuracy to understand overall correctness. Use macro F1 to check whether the model is treating each action class fairly.</p></div>
+  <div class="card" id="action-recognition-temporal-leakage"><h3>Temporal Leakage</h3><p>Overlapping windows share many frames. If nearby windows are randomly split between train and test, the test set can look too similar to the training set. On this episode a stratified split inflates every baseline above 0.93 accuracy. For serious evaluation, split by time blocks or by held-out episodes.</p></div>
+  <div class="card" id="action-recognition-label-shift"><h3>Label Shift</h3><p>A split can be leak-free and still useless. The chronological tail split holds out the end of the episode — but every action here happens exactly once, so the tail contains classes the model never saw in training. Even the majority baseline scores 0.0. When the train and test label distributions disagree this badly, no model can look good, and the number measures the split rather than the model.</p></div>
+  <div class="card" id="action-recognition-blocked-instance-split"><h3>Blocked-Instance Split</h3><p>The within-episode compromise: hold out the chronological tail of each action instance, then purge any train window that shares frames with a test window. Every test class keeps train support (no label shift) and no frame appears on both sides (no leakage). It measures within-instance generalization — a weaker claim than cross-episode generalization, but an honest one.</p></div>
+  <div class="card" id="action-recognition-early-vs-late-fusion"><h3>Early vs Late Fusion</h3><p>Early fusion concatenates features before training one classifier. Late fusion trains one classifier per modality and averages their predicted probabilities. Early fusion can model cross-modal interactions but lets a weak modality drag down a strong one inside a single head; late fusion keeps modalities independent but cannot model their interactions. Neither automatically beats the best single modality — making fusion help is a research problem, not a default.</p></div>
+  <div class="card" id="action-recognition-calibration-and-ece"><h3>Calibration and ECE</h3><p>A model is calibrated when predictions made with confidence p are correct about p of the time. Expected calibration error (ECE) bins predictions by confidence and averages the gap between confidence and accuracy. Small models on small data are usually overconfident — here ECE reaches 0.47, meaning confidence overstates accuracy by almost half. Check <code>calibration.json</code> before trusting any probability downstream.</p></div>
+  <h2 class="section" style="--accent:#f59e0b">3D Reconstruction</h2>
+  <p class="source">from <a href="https://github.com/ChaoYue0307/egocentric-3d-reconstruction-demo">egocentric-3d-reconstruction-demo</a></p>
+  <div class="card" id="3d-reconstruction-frame-extraction"><h3>Frame Extraction</h3><p>Most reconstruction tools operate on images. Frame extraction samples still images from the video so feature matchers and neural renderers can process them.</p>
+<p>Dense sampling gives more overlap but costs more time. Sparse sampling is faster but can fail if adjacent images no longer share enough visual content.</p></div>
+  <div class="card" id="3d-reconstruction-camera-intrinsics"><h3>Camera Intrinsics</h3><p>Intrinsics describe how a camera maps 3D rays to pixels. Common values include:</p>
+<p>• focal length,</p>
+<p>• principal point,</p>
+<p>• distortion parameters.</p>
+<p>Fisheye cameras are useful for egocentric capture because they see a wide field of view. They also require careful distortion handling.</p></div>
+  <div class="card" id="3d-reconstruction-camera-extrinsics"><h3>Camera Extrinsics</h3><p>Extrinsics describe where a camera is in 3D space and how it is oriented. In a multi-camera rig, extrinsics explain how cameras are positioned relative to each other.</p></div>
+  <div class="card" id="3d-reconstruction-slam"><h3>SLAM</h3><p>SLAM means simultaneous localization and mapping. It estimates the camera path while building a sparse map of the environment. The sample annotation already contains SLAM camera poses and a point cloud preview.</p></div>
+  <div class="card" id="3d-reconstruction-colmap"><h3>COLMAP</h3><p>COLMAP is a structure-from-motion and multi-view stereo system. It usually runs:</p>
+<p>1. feature extraction, 2. feature matching, 3. mapping and bundle adjustment, 4. optional image undistortion and dense reconstruction.</p>
+<p>Bundle adjustment optimizes camera poses and 3D points so projected points align with matched image features.</p></div>
+  <div class="card" id="3d-reconstruction-nerf"><h3>NeRF</h3><p>NeRF represents a scene as a neural function. Given a 3D point and viewing direction, it predicts density and color. Rendering a new view means sampling many camera rays through this learned field.</p></div>
+  <div class="card" id="3d-reconstruction-3d-gaussian-splatting"><h3>3D Gaussian Splatting</h3><p>3D Gaussian Splatting represents a scene with many colored 3D Gaussians. It is often faster to render than classic NeRF and can produce high-quality novel views when camera poses are accurate.</p></div>
+  <div class="card" id="3d-reconstruction-why-egocentric-reconstruction-is-hard"><h3>Why Egocentric Reconstruction Is Hard</h3><p>First-person footage violates many assumptions of clean multi-view reconstruction:</p>
+<p>• the camera moves quickly,</p>
+<p>• hands and objects move independently,</p>
+<p>• motion blur reduces feature matches,</p>
+<p>• fisheye distortion needs the right model,</p>
+<p>• dynamic objects can confuse bundle adjustment,</p>
+<p>• the camera may not revisit the same area from enough viewpoints.</p>
+<p>Good reconstruction starts with clean frame sampling, calibration awareness, and explicit failure analysis.</p></div>
+  <div class="card" id="3d-reconstruction-frame-quality-diagnostics"><h3>Frame Quality Diagnostics</h3><p>Reconstruction fails quietly when inputs are weak. Three cheap numbers predict most failures before COLMAP runs: Laplacian variance (blur — low variance means few sharp edges), exposure clipping fractions, and ORB feature matches between consecutive frames (overlap — the matches COLMAP will actually rely on). Measuring them on a central crop keeps the black fisheye border from skewing the statistics.</p></div>
+  <div class="card" id="3d-reconstruction-extrinsic-convention-verification"><h3>Extrinsic Convention Verification</h3><p>A transform stored as <code>T_c_b</code> might map body→camera or camera→body, and the SLAM pose might be world→body or body→world. Names do not disambiguate; geometry does. Projecting known 3D points (here, mocap hand joints) under each candidate composition and scoring in-bounds fraction plus depth plausibility selects the right chain empirically — and the wide fisheye field of view makes in-bounds alone insufficient, which is why the depth prior matters.</p></div>
+  <div class="card" id="3d-reconstruction-dynamic-object-masking"><h3>Dynamic-Object Masking</h3><p>COLMAP assumes a static scene; hands and manipulated objects violate it. A mask (white = use, black = ignore) removes those pixels from feature extraction. Masks from projected mocap are approximate — registration offsets of tens of pixels are normal — so dilation absorbs error and a visual preview is mandatory before trusting them.</p></div>
+  <div class="card" id="3d-reconstruction-ate-rpe-and-sim-3-alignment"><h3>ATE, RPE, and Sim(3) Alignment</h3><p>COLMAP trajectories live in an arbitrary frame and scale, so comparing raw translations to SLAM is meaningless. First convert COLMAP world-to-camera poses to camera centers (<code>C = -R^T t</code>), then align with a similarity transform (Umeyama). ATE RMSE measures global consistency after alignment; RPE RMSE measures local drift between consecutive poses; the recovered scale is itself diagnostic — a scale far from any physical expectation signals a degenerate reconstruction.</p></div>
+  <h2 class="section" style="--accent:#a78bfa">Scene Graph Memory</h2>
+  <p class="source">from <a href="https://github.com/ChaoYue0307/scene-graph-from-egocentric-video">scene-graph-from-egocentric-video</a></p>
+  <div class="card" id="scene-graph-memory-scene-graph"><h3>Scene Graph</h3><p>A scene graph represents the world as objects and relations. Instead of storing only pixels, it stores structured facts:</p>
+<pre>
+object: kettle
+relation: hand_grasps(kettle)
+time: 72863804786785
+</pre>
+<p>This structure is useful because it can be queried, inspected, and passed to an agent or planner.</p></div>
+  <div class="card" id="scene-graph-memory-object-centric-memory"><h3>Object-Centric Memory</h3><p>Object-centric memory keeps a record for each object: when it was first seen, when it was last seen, how many times it appeared, and which aliases refer to it.</p>
+<p>In egocentric video, objects may disappear behind hands or leave the field of view. Tracking object memory across time helps preserve task context.</p></div>
+  <div class="card" id="scene-graph-memory-temporal-relation"><h3>Temporal Relation</h3><p>A temporal relation is a fact with a timestamp. For example:</p>
+<pre>
+visible_in(kettle, frame_12)
+hand_grasps(kettle) at timestamp T
+action_active(person, &quot;Move kettle&quot;) at timestamp T
+</pre>
+<p>Temporal relations turn a static graph into a timeline.</p></div>
+  <div class="card" id="scene-graph-memory-hand-object-interaction"><h3>Hand-Object Interaction</h3><p>Hand-object interaction describes how the actor&#x27;s hands relate to objects: moving toward, grasping, placing, pouring, or touching. These relations are important for understanding intention, not just appearance.</p></div>
+  <div class="card" id="scene-graph-memory-spatial-reasoning"><h3>Spatial Reasoning</h3><p>Spatial reasoning asks where things are and how they relate in space. This repo stores SLAM camera poses with frames, which is a first step toward space-aware queries.</p>
+<p>Examples:</p>
+<p>• What object was visible when the camera was near the dripper?</p>
+<p>• Which object did the hand interact with before the kettle moved?</p>
+<p>• What was the current task state at the last observed timestamp?</p></div>
+  <div class="card" id="scene-graph-memory-provenance"><h3>Provenance</h3><p>Provenance records where each fact came from. A relation may come from caption text, object annotations, or future detector outputs. Provenance makes the graph auditable and easier to improve.</p></div>
+  <div class="card" id="scene-graph-memory-detector-hook"><h3>Detector Hook</h3><p>The current graph uses caption annotations. A future detector or segmenter can replace or merge those object sources while keeping the same graph schema:</p>
+<pre>
+video frame -&gt; detector/segmenter -&gt; objects/masks -&gt; scene graph -&gt; queries
+</pre></div>
+  <div class="card" id="scene-graph-memory-spatial-memory-egocentric-proxy"><h3>Spatial Memory (Egocentric Proxy)</h3><p>Attaching the wearer&#x27;s SLAM camera position to each object sighting turns the scene graph into a spatial memory: <code>where:&lt;object&gt;</code> answers with the camera position at the last sighting. This is a proxy — where the *wearer* was, not where the object is. For tabletop manipulation the two nearly coincide; for far-field observations they do not. Provenance labels the proxy explicitly so downstream users cannot mistake it for triangulated geometry.</p></div>
+  <div class="card" id="scene-graph-memory-graph-qa-evaluation"><h3>Graph QA Evaluation</h3><p>A scene graph is only as useful as the questions it answers correctly. <code>eval/qa_pairs.json</code> holds human-labeled questions with gold answers — object memory, alias resolution, visibility at a timestamp, interactions, task state, temporal order, and spatial proximity. Negative questions (absent objects, wrong relations) prevent a yes-saying graph from scoring well. With caption-grounded construction the score is a regression check; with detector sources it becomes a perception benchmark against the same gold answers.</p></div>
+</main>
+</body>
+</html>
