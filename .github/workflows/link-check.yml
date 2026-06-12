@@ -15,9 +15,13 @@ jobs:
       - name: Check links
         uses: lycheeverse/lychee-action@v2
         with:
+          # Own-site URLs are remapped to workspace files so a push that adds a
+          # new page does not race the Pages deployment.
           args: >-
             --no-progress
             --accept 200..=204,403,429
+            --remap 'https://chaoyue0307.github.io/egocentric-vision-learning-hub/?$ file://${{ github.workspace }}/docs/index.html'
+            --remap 'https://chaoyue0307.github.io/egocentric-vision-learning-hub/(.+) file://${{ github.workspace }}/docs/$1'
             README.md ARTICLE.md PROJECT_SUMMARY.md CONTRIBUTING.md
             docs/index.html docs/article.html docs/glossary.html
           fail: true
