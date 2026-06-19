@@ -43,13 +43,16 @@ def load(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 action_summary = load(ACTION / "outputs/sample_ablation/summary.json")
+dino = load(ACTION / "outputs/dino_ablation/summary.json")
 chrono = load(ACTION / "outputs/split_comparison/chronological/summary.json")
 strat = load(ACTION / "outputs/split_comparison/stratified/summary.json")
 quality = load(RECON / "outputs/sample_demo/frame_quality.json")
 hand_masks = load(RECON / "outputs/cam1_hand_mask_demo/hand_mask_report.json")
 scene_graph = load(GRAPH / "outputs/sample_graph/scene_graph.json")
 qa = load(GRAPH / "outputs/qa_eval/qa_results.json")
-print("artifacts loaded:", all(x is not None for x in [action_summary, chrono, strat, quality, scene_graph, qa]))"""),
+qa_detector = load(GRAPH / "outputs/qa_eval_detector/qa_results.json")
+triangulation = load(GRAPH / "outputs/triangulated_graph/triangulation_summary.json")
+print("artifacts loaded:", all(x is not None for x in [action_summary, dino, chrono, strat, quality, scene_graph, qa, qa_detector, triangulation]))"""),
     md("""## Stage 1 — Action: hands beat pixels, and the split decides everything
 
 The action repo trains three tiny baselines (RGB, hand joints, early/late fusion) on 1093
@@ -73,13 +76,17 @@ print(f"  blocked-instance (honest):   {action_summary['experiments'][hand]['acc
 strongest honest cue (0.47 vs the 0.14 majority floor); appearance features mostly memorize
 the kitchen. Keep that in mind for Stage 3 — the scene graph will show *why* hands carry
 the signal."""),
+    code("""print("does a stronger visual backbone change the verdict? (frozen DINOv2, same head + split)")
+for name in ["rgb_only", "rgb_hand_fusion"]:
+    print(f"  {name:18s} handcrafted={action_summary['experiments'][name]['accuracy']:.3f} -> dino={dino['experiments'][name]['accuracy']:.3f}")
+print(f"  hand_joints_only stays {action_summary['experiments']['hand_joints_only']['accuracy']:.3f} and still wins")"""),
     md("""## Stage 2 — Reconstruction readiness: measure, don't guess
 
 Before any COLMAP run, the recon repo quantifies what reconstruction actually consumes:
 sharp frames and feature overlap — and masks the one thing guaranteed to violate the
 static-scene assumption: the wearer's hands."""),
     code("""print(f"frames sampled: {quality['num_frames']}  blurry: {quality['num_blurry']}  low-overlap pairs: {quality['num_low_overlap']}")
-print(f"mean ORB matches between consecutive frames: {quality['mean_matches_to_previous']}")
+print(f"mean RANSAC-verified inliers between frames: {quality['mean_geometric_inliers']} (inlier ratio {quality['mean_inlier_ratio']})")
 print()
 sel = hand_masks["convention_selection"] if hand_masks else None
 if sel:
@@ -99,9 +106,12 @@ against 33 human-labeled QA pairs."""),
     code("""meta = scene_graph["metadata"]
 print(f"graph: {meta['num_frames']} frames, {meta['num_objects']} objects, {meta['num_relations']} relations")
 print("most-observed objects:", ", ".join(f"{o} ({n})" for o, n in meta["top_objects"][:5]))
-print(f"QA benchmark: {qa['num_correct']}/{qa['num_questions']} = {qa['accuracy']:.3f}")
-for qtype, counts in qa["per_type"].items():
-    print(f"  {qtype:20s} {counts['correct']}/{counts['total']}")"""),
+print(f"QA benchmark (caption-grounded): {qa['num_correct']}/{qa['num_questions']} = {qa['accuracy']:.3f}")
+print(f"QA benchmark (detector-only):    {qa_detector['num_correct']}/{qa_detector['num_questions']} = {qa_detector['accuracy']:.3f}  <- the perception gap")
+print("the gap is coverage: undetected objects break existence/order queries, not action/subtask")"""),
+    code("""print("triangulated object positions (detector boxes + camera poses, residual-gated):")
+for oid, r in triangulation["objects"].items():
+    print(f"  {oid:10s} xyz={r['xyz']} residual={r['residual_m']:.3f}m reliable={r['reliable']}")"""),
     code("""kettle = scene_graph["objects"]["kettle"]
 trail = kettle.get("camera_trail", [])
 print("WHERE DID I LAST SEE THE KETTLE?")

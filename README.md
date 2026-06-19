@@ -30,9 +30,11 @@ The sequence is:
 connects all three stages on the same episode — and runs entirely from the
 sibling repos' **committed artifacts**, so no raw dataset download is needed.
 Clone the four repos into one parent directory and run it top to bottom. It
-shows the same model spanning 0.004→0.941 accuracy purely from split design,
-the empirically-verified extrinsic chain behind the hand masks, and the
-"where did I last see the kettle?" spatial-memory query, then ties the three
+shows the same model spanning 0.004→0.941 accuracy purely from split design (and
+that a frozen DINOv2 backbone still cannot beat hand motion), the
+empirically-verified extrinsic chain behind the hand masks, the caption-vs-
+detector QA gap (33/33 → 24/33) and triangulated object positions, and the
+"where did I last see the kettle?" spatial-memory query — then ties the three
 stages together: hands are the through-line of egocentric vision.
 
 The glossary page merges all three project glossaries (33 concepts) with
